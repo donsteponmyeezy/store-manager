@@ -2,6 +2,8 @@
 
 1. ## Overview
 
+### UML Diagram is Visible at UMLDiagram.md or through the included screenshot
+
 This Store Manager application simulates a queuing system with multiple servers. This project explores event-driven programming, system modeling, and continuous probability distributions (Poisson, Exponential). The simulation compares predicted analytical results against a random, event-driven timeline utilizing a custom Min-Heap priority queue and a standard FIFO queue as requested in the project requirements.
 
 ### This Store Manager app uses a MMc Queuing System
