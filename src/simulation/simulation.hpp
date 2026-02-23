@@ -13,29 +13,29 @@ class Simulation
 {
 private:
     // Input Parameters
-    float lambda;    // Arrival rate
-    float mu;        // Service rate
-    int M;           // # of servers
-    int totalEvents; // # of events to simulate
+    float lambda;     // Arrival rate
+    float mu;         // Service rate
+    int M;            // # of servers
+    int total_events; // # of events to simulate
 
     // Instances of FIFO Queue and Min-Heap for Simulation
     PriorityQueue pq;
     FifoQueue fifo;
 
     // Track number of servers available at given time
-    int serverAvailableCnt;
-    float currentTime;
-    int eventsProcessed;
+    int server_available_cnt;
+    float current_time;
+    int events_processed;
 
     // Variables for Holding Simulation Results
-    float totalWaitTime;
-    float totalServiceTime;
-    float totalIdleTime;
-    int customerWaitedCnt;
-    int totalCustomers;
+    float total_wait_time;
+    float total_service_time;
+    float total_idle_time;
+    int customer_waited_cnt;
+    int total_customers;
 
     // Track the time of last departure to calculate server idle time (P sub 0)
-    float lastDepartureTime;
+    float last_departure_time;
 
     // Helper Declarations
     float getNextRandomInterval(float avg);
