@@ -30,7 +30,7 @@ void runTest(const std::string &filename)
 
 int main()
 {
-    // The program should read and process two files: test1.txt and test2.txt
+    // Read and process test1.txt and test2.txt
     runTest("test1.txt");
 
     std::cout << "\n";
