@@ -54,7 +54,7 @@ public:
     // Use provided forumulas to calculate analytical results that estimate the results of longer simulations
     void runAnalyticalModel();
 
-    // Run the sim of the application to process events until totalEvents have been processed
+    // Run the sim of the application to process events until total_events have been processed
     void runSimulation();
 
     // Print the results of the simulation and analytical model to the console in a readable format
