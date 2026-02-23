@@ -131,7 +131,7 @@ void Simulation::runAnalyticalModel()
     // Display values with 4 decimal places as shown in the example output for easy comparison
     std::cout << std::fixed << std::setprecision(4);
 
-    std::cout << "Po = " << P0 << std::endl;
+    std::cout << " Po = " << P0 << std::endl;
     std::cout << " L = " << L << std::endl;
     std::cout << " W = " << W << std::endl;
     std::cout << " Lq = " << Lq << std::endl;
@@ -146,19 +146,24 @@ void Simulation::runSimulation()
     Customer first_arrival;
     first_arrival.arrivalTime = current_time + getNextRandomInterval(lambda);
     first_arrival.pqTime = first_arrival.arrivalTime;
-    first_arrival.departureTime = 0.0f; // ensures an arrival event and not a departure
+    first_arrival.departureTime = 0.0f; // Using 0.0f to indicate arrival
     pq.insert(first_arrival);
 
     server_available_cnt = M;
     events_processed = 0;
     last_departure_time = 0.0f;
 
+    // NOTE: To avoid scheduling the next arrival based on the current time which includes
+    // departures we must to track the last scheduled arrival time separately.
+    // This way, we can ensure that arrivals follow the exponential distribution in all cases
+    float last_scheduled_arrival_time = first_arrival.arrivalTime;
+
     while (!pq.isEmpty() && events_processed < total_events)
     {
         Customer current_event = pq.removeMin();
         current_time = current_event.pqTime;
 
-        // Process arrival if departure time is 0, otherwise process departure
+        // Departure time == 0 means arrival event
         if (current_event.departureTime == 0.0f)
         {
             processArrival(current_event);
@@ -170,14 +175,19 @@ void Simulation::runSimulation()
 
         events_processed++;
 
-        // If event limit is not yet hit, refill PQ with new arrivals
+        // Refill the PQ with new arrivals if it gets too small and we haven't hit the event limit
+        // If event limit hasn't been hit by the time we get close to the end of the PQ, add more arrivals
         if (pq.getSize() <= M + 1 && events_processed < total_events)
         {
             Customer next_arrival;
-            next_arrival.arrivalTime = current_time + getNextRandomInterval(lambda);
+
+            next_arrival.arrivalTime = last_scheduled_arrival_time + getNextRandomInterval(lambda);
             next_arrival.pqTime = next_arrival.arrivalTime;
             next_arrival.departureTime = 0.0f;
             pq.insert(next_arrival);
+
+            // Update the tracker each block for reasons listed above
+            last_scheduled_arrival_time = next_arrival.arrivalTime;
         }
     }
 }
