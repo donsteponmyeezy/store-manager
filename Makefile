@@ -9,7 +9,7 @@ SRC_PQ   = src/priority_queue/priority_queue.cpp
 SRC_SIM  = src/simulation/simulation.cpp
 
 # Target executable name
-TARGET = queue_sim
+TARGET = simulation
 
 # Rules
 all: $(TARGET)
