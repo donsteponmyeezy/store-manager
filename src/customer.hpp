@@ -14,7 +14,7 @@ public:
     //  Simulation Data
     float arrivalTime;
     float startOfServiceTime;
-    float departureTime; // AKA when service is completed
+    float departureTime; // Equivalent to time when service has been completed
 
     //  Queue Data
     float pqTime; // Key for sorting
@@ -46,4 +46,4 @@ public:
     }
 };
 
-#endif // CUSTOMER_HPP
+#endif
