@@ -1,3 +1,5 @@
+# Class Diagram
+```mermaid
 classDiagram
     class Customer {
         +float arrivalTime
@@ -64,3 +66,4 @@ classDiagram
     Simulation *-- FifoQueue : contains
     PriorityQueue o-- Customer : manages
     FifoQueue o-- Customer : manages
+    ```
