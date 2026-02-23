@@ -14,10 +14,10 @@ public:
     //  Simulation Data
     float arrivalTime;
     float startOfServiceTime;
-    float departureTime; // Equivalent to time when service has been completed
+    float departureTime; // equivalent to time when service has been completed
 
     //  Queue Data
-    float pqTime; // Key for sorting
+    float pqTime; // key for sorting
     EventType type;
     Customer *nextCust;
 
@@ -26,7 +26,8 @@ public:
         pqTime = time;
         type = t;
 
-        // Depending on the event, populate the appropriate time variable and set the other to 0 (ensure to be stored as a float)
+        // Depending on the event, populate the appropriate time variable
+        // Set the other to 0 and ensure it's stored as a float
         arrivalTime = (t == ARRIVAL) ? time : 0.0f;
         startOfServiceTime = 0.0f;
         departureTime = (t == DEPARTURE) ? time : 0.0f;

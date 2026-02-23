@@ -23,3 +23,19 @@ A single `Customer` object is used to represent either an arrival or a departure
 * **Priority Queue Time (`pqTime`):** The time this event occurs. This acts as the key for our Min-Heap Priority Queue, meaning customer arrival time can be compared against server completion time and trigger the simulation to process the next event.
 * **Simulation Times:** Tracks `arrivalTime`, `startOfServiceTime`, and `departureTime`. As the event moves through our simulation these times are calculated and recorded and are ultimately used to calculate wait times, system utilization, and averages.
 * **Linked List Pointer (`nextCust`):** A reference/pointer to the next node, allowing the customer to be placed in the queue when all servers (`c`) are currently busy. 
+
+
+
+### Variables
+
+- **P0​:** The probability that the entire system is empty (zero people in line, zero people being served).
+
+- **L:** The average number of people in the entire system (in line + being served).
+
+- **W:** The average time a customer spends in the entire system.
+
+- **Lq​:** The average number of customers waiting in the FIFO queue.
+
+- **Wq​:** The average time a customer spends waiting in the FIFO queue.
+
+- **ρ (Rho):** The system utilization factor (how busy the servers are on average).

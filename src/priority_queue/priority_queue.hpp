@@ -33,7 +33,7 @@ public:
     void insert(Customer new_customer);
     Customer removeMin(); // remove root and bubble down
 
-    // Utility
+    // Utility Declarations
     Customer peekMin() const; // return root wihtout removal
     bool isEmpty() const;
     bool isFull() const;
