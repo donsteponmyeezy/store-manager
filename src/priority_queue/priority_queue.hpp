@@ -31,7 +31,7 @@ public:
 
     // Queue Operations
     void insert(Customer new_customer);
-    Customer removeMin(); // Remove root and bubble down
+    Customer removeMin(); // remove root and bubble down
 
     // Utility
     Customer peekMin() const; // return root wihtout removal
